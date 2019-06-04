@@ -1,35 +1,48 @@
 # Avaliação para Dev Junior 
 
 ## Objetivo:
-Criar uma aplicação Web com javascript que permita listar, criar, excluir e atualizar uma lista de Catalogos astronomicos e seus respectivos objetos.
+Criar uma aplicação web com javascript que permita listar, criar, excluir e atualizar uma lista de catálogos astronomicos e seus respectivos objetos.
 
-A funcionalidade Create pode resumida em um botão que ao ser clicado inclua um novo catalogo, não é necessário a criação de formulário. A mesma coisa para o Update um botão que ao ser clicado altere o nome de um determinado catalogo.
+A funcionalidade "Create" pode resumida em um botão que ao ser clicado inclua um novo catálogo, não é necessário a criação de formulário. A mesma coisa para o "Update", um botão que ao ser clicado altere o nome de um determinado catálogo.
 
+## Opcionais:
+A aplicação deve ter uma interface de detalhe, que permita selecionar um catálogo e ter acesso aos objetos associados a ele. 
 
-## Objetivos Opcionais:
-A aplicação deve ter uma interface de detalhe, que permita selecionar um catalogo e ter acesso aos objetos associados a ele. 
+Na interface de detalhe ao lado da lista de objetos, deve ser utilizado o component Aladin, que permite exibir uma imagem do céu. Ao clicar em um objeto, deve-se posicionar o Aladin nas coordendas do objeto utilizando a função ```aladin.gotoRaDec()```. Essa função espera os atributos ra, dec, contidos na api catalog_objects. 
 
-Na interface de detalhe ao lado da lista de objetos, deve ser utilizado o component Aladin, que permite exibir uma imagem do Céu. ao clicar em um objeto deve-se posicionar o Aladin nas coordendas do objeto utilizando a função ```aladin.gotoRaDec()```. essa função espera os atributos ra, dec da api catalog_objects. 
+**Exemplo de uso:**
+```javascript
+var aladin = A.aladin('#aladin-lite-div',
+    {
+        survey: 'P/allWISE/color', // set initial image survey
+        fov: 1.5, // initial field of view in degrees
+        cooFrame: 'galactic', // set galactic frame
+        reticleColor: '#ff89ff', // change reticle color
+        reticleSize: 64 // change reticle size
+    }
+);
 
-Deve ser possivel fazer uma busca pelo nome do Catalogo. 
+aladin.gotoRaDec(data.ra, data.dec);
+```
 
-Deve ser possivel paginar a lista de catalogo.
+Deve ser possivel fazer uma busca pelo nome do catálogo. 
+Deve ser possivel paginar a lista de catálogo.
 
 
 ## Sobre os Dados
-Neste exemplo estamos usando Catalogo e Objetos. um catalogo representa uma lista de objetos astronomicos galaxias, estrelas, nebulosas etc. Um catalogo tem um dono (owner) e data de criação. 
+Neste exemplo estamos usando Catálogo e Objetos. Um catálogo representa uma lista de objetos astronomicos, galaxias, estrelas, nebulosas etc. Um catálogo tem um dono (owner) e data de criação. 
 
-Todo Objeto está relacionado a um catalogo, e tem informaçoes como nome do objeto, coordenada, descrição e uma link que aponta para a Wikipedia.
-a coordenada é formada pelos atributos **RA** e **Dec**. 
+Todo Objeto está relacionado a um Catálogo, e tem informações como: nome do objeto, coordenada, descrição e um link que aponta para a Wikipedia.
+A coordenada é formada pelos atributos **RA** e **Dec**. 
 
-Uma analogia de Catalogo e Objetos pode ser a relação entre Categorias e produtos por exemplo. 
+Uma analogia de Catálogo e Objetos pode ser a relação entre Categorias e Produtos por exemplo. 
 
 **TODO** Incluir imagem do modelo. 
 
 **TODO** Descrever a etapa do git. 
 
 # Ambiente
-A maquina está configurada com docker, npm, yarn, git, vscode, Google Chrome e Firefox. o backend está instalado no home do usuario no diretório ```/home/avaliacao_jr_backend``` dentro deste diretório tem um script start.sh que inicia o Backend. o terminal onde o ambiente está rodando deve ficar aberto o tempo todo. caso precise iniciar o backend novamente basta executar o script start, para desligar o backend usar as teclas CRTL + C no terminal que está executando. 
+A maquina está configurada com docker, npm, yarn, git, vscode, Google Chrome e Firefox. O backend está instalado no home do usuário no diretório ```/home/avaliacao_jr_backend``` dentro deste diretório tem um script start.sh que inicia o Backend. o terminal onde o ambiente está rodando deve ficar aberto o tempo todo. Caso precise iniciar o backend novamente basta executar o script start, para desligar o backend usar as teclas CRTL + C no terminal que está executando. 
 
 Ao ligar o backend a API vai estar disponivel na url http://localhost:5000
 
@@ -42,7 +55,7 @@ O Banco de dados está no diretório ``` /home/avaliacao_jr_backend/db```, neste
 
 **Metodos**: ```['GET', 'POST', 'DELETE', 'PUT', 'PATCH']```
 
-**Descrição**: Esta API retorna todos os catalogos.
+**Descrição**: Esta API retorna todos os catálogos.
 
 **Exemplo de retorno**: 
 
@@ -69,7 +82,7 @@ O Banco de dados está no diretório ``` /home/avaliacao_jr_backend/db```, neste
 
 **Metodos**: ['GET']
 
-**Descrição**: Esta API retorna todos os objetos. Para recuperar apenas os objetos de um catalogo a URL deve ter este formato ```http://localhost:5000/api/catalog/<catalog_id>/catalog_objects```
+**Descrição**: Esta API retorna todos os objetos. Para recuperar apenas os objetos de um catálogo, a URL deve ter este formato ```http://localhost:5000/api/catalog/<catalog_id>/catalog_objects```
 
 
 **Exemplo de retorno**: 
