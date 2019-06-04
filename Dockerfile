@@ -5,9 +5,12 @@ ENV FLASK_ENV=development
 
 RUN pip install --upgrade pip \
     && pip install --no-cache-dir \
+    SQLAlchemy \
     flask \
     flask-sqlalchemy \
-    SQLAlchemy 
+    Flask-Restless \
+    flask-cors
+    
 
 COPY ./app /app
 
