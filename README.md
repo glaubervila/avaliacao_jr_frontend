@@ -1,4 +1,31 @@
+# Avaliação para Dev Junior 
 
+## Objetivo:
+Criar uma aplicação Web com javascript que permita listar, criar, excluir e atualizar uma lista de Catalogos astronomicos e seus respectivos objetos.
+
+## Objetivos Opcional:
+A aplicação deve ter uma interface de detalhe, que permita selecionar um catalogo e ter acesso aos objetos associados a ele. 
+
+Deve ser possivel fazer uma busca pelo nome do Catalogo. 
+
+Deve ser possivel paginar a lista de catalogo.
+
+Na interface de detalhe ao lado da lista de objetos, deve ser utilizado o component Aladin, que permite exibir uma imagem do Céu. ao clicar em um objeto deve-se posicionar o Aladin nas coordendas do objeto utilizando a função ```aladin.gotoRaDec()```. essa função espera os atributos ra, dec da api catalog_objects. 
+Pagina oficial Aladin: http://aladin.u-strasbg.fr/AladinLite/ 
+Docs: http://aladin.u-strasbg.fr/AladinLite/doc/API/
+Exemples: http://aladin.u-strasbg.fr/AladinLite/doc/API/examples/
+
+
+Descrever o git. 
+
+
+
+1 - Fazer o clone do repositório https://github.com/linea-it/avaliacao_jr_backend e seguir os passos descritos no Readme para iniciar o backend. 
+
+2 - Criar um novo repositório para o Frontend. 
+
+
+senha de usuario: 123mudar
 
 Comando para fazer o build do container
 ```
@@ -15,27 +42,7 @@ testar em
 http://localhost:5000/
 
 
-# Avaliação para Dev Junior 
 
-1 - Fazer o clone do repositório https://github.com/linea-it/avaliacao_jr_backend e seguir os passos descritos no Readme para iniciar o backend. 
-
-2 - Criar um novo repositório para o Frontend. 
-
-
-### Objetivo Principal:
-Criar uma aplicação Web com javascript que permita listar, criar, excluir e atualizar uma lista de Catalogos astronomicos e seus respectivos objetos.
-
-### Objetivos Secundarios:
-A interface deve contar com uma interface de detalhe, que permita selecionar um catalogo e ter acesso aos objetos associados a ele. 
-
-Deve ser possivel fazer uma busca pelo nome do Catalogo. 
-
-Deve ser possivel paginar a lista de catalogo.
-
-Na interface de detalhe ao lado da lista de objetos, deve ser utilizado o component Aladin, que permite exibir uma imagem do Céu. ao clicar em um objeto deve-se posicionar o Aladin nas coordendas do objeto utilizando a função ```aladin.gotoRaDec()```. essa função espera os atributos ra, dec da api catalog_objects. 
-Pagina oficial Aladin: http://aladin.u-strasbg.fr/AladinLite/ 
-Docs: http://aladin.u-strasbg.fr/AladinLite/doc/API/
-Exemples: http://aladin.u-strasbg.fr/AladinLite/doc/API/examples/
 
 
 
@@ -78,8 +85,11 @@ Exemplo de retorno:
 
 Links uteis sobre a API
 HTTP methods: https://flask-restless.readthedocs.io/en/stable/customizing.html#http-methods
+
 Fetching: https://flask-restless.readthedocs.io/en/latest/fetching.html
+
 Format of Requests and Responses: https://flask-restless.readthedocs.io/en/stable/requestformat.html#requestformat
+
 Making Search Queries: https://flask-restless.readthedocs.io/en/stable/searchformat.html
 
 
