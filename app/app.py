@@ -10,8 +10,6 @@ CORS(app)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////db/avaliacao.db'
 db = SQLAlchemy(app)
 
-# db.create_all()
-
 
 class Catalog(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -49,7 +47,7 @@ try:
     db.session.query(Catalog).delete()
 
     cat1 = Catalog(name='Galaxies', owner='Glauber Costa', date=datetime.now())
-    cat2 = Catalog(name='List of nebulae', owner='Cristiano Singulani', date=None)
+    cat2 = Catalog(name='List of nebulae', owner='Cristiano Singulani', date=datetime.datetime.strptime('2019-05-04 20:45:23', '%Y-%m-%d %H:%M:%S'))
 
     db.session.add(cat1)
     db.session.add(cat2)
@@ -95,7 +93,6 @@ catalog_api = manager.create_api(
     methods=['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
     exclude_columns=['catalog_objects'],
     allow_patch_many=False,
-
     )
 
 catalog_objects_api = manager.create_api(

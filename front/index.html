@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">   
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/select/1.3.0/css/select.bootstrap4.min.css">
+    <link rel='stylesheet' href='https://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.css'>
+    <style>
+    </style>
+    <title>Candidates evaluation WEB Jr</title>
+  </head>
+  <body>
+    <div class="container-fluid">
+        <div class="row" style="padding: 20px 10px 20px 10px">
+            <div class="col">
+                <table class="table table-striped table-bordered" style="width:100%" id="catalog_table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Date</th>
+                            <th scope="col">Owner</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+        </div>
+        <div class="row" style="display: none; padding: 20px 10px 20px 10px" id="objects_box">
+            <div class="col-7">
+                <table class="table table-striped table-bordered" style="width:100%" id="objects_table">
+                    <thead>
+                        <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">RA</th>
+                            <th scope="col">Dec</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
+            <div class="col-5" id='aladin_box'>
+            </div>
+        </div>
+    </div>
+
+    <script type='text/javascript' src='https://code.jquery.com/jquery-1.9.1.min.js' charset='utf-8'></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap4.min.js"></script>
+    <script src="https://cdn.datatables.net/select/1.3.0/js/dataTables.select.min.js"></script>
+    <script type='text/javascript' src='https://aladin.u-strasbg.fr/AladinLite/api/v2/latest/aladin.min.js' charset='utf-8'></script>
+
+    <script type="text/javascript">
+        var catalog_table = $('#catalog_table').DataTable( {
+            "ajax": {
+                "url": "http://localhost:5000/api/catalog",
+                "dataSrc": "objects"
+            },
+            "columns": [
+                { "data": "id" },
+                { "data": "name" },
+                { "data": "date" },
+                { "data": "owner" }
+            ],
+            "lengthMenu": [[5, 10, -1], [5, 10, "All"]],
+            select: {
+                style: 'single'
+            }
+        } );
+
+        $('#catalog_table tbody').on('click', 'tr', function () {
+            var data = catalog_table.row( this ).data();
+            console.log( 'You clicked on '+data.id+'\'s row' );
+            
+            var filters = [{"name": "catalog_id", "op": "==", "val": data.id}];
+
+            var objs_table = $('#objects_table').DataTable( {
+                "ajax": {
+                    "url": "http://localhost:5000/api/catalog_objects",
+                    "dataSrc": "objects",
+                    "data": {"q": JSON.stringify({"filters": filters})},
+                    "dataType": "json",
+                    "contentType": "application/json"
+                },
+                "columns": [
+                    { "data": "id" },
+                    { "data": "name" },
+                    { "data": "ra" },
+                    { "data": "dec" }
+                ],
+                select: {
+                    style: 'single'
+                },
+                "lengthMenu": [[5, 10, -1], [5, 10, "All"]],
+                "destroy": true
+            } );
+
+            $('#objects_box').show();
+
+            $('#objects_table tbody').unbind().on('click', 'tr', function () {
+                var data = objs_table.row( this ).data();
+                
+                $('#aladin_box').empty();
+                $('#aladin_box').html("<div id='aladin-lite-div' style='width: 500px; height:500px;' />");
+
+                var aladin = A.aladin('#aladin-lite-div',
+                    {
+                        survey: 'P/allWISE/color', // set initial image survey
+                        fov: 1.5, // initial field of view in degrees
+                        cooFrame: 'galactic', // set galactic frame
+                        reticleColor: '#ff89ff', // change reticle color
+                        reticleSize: 64 // change reticle size
+                    }
+                );
+
+                aladin.gotoRaDec(data.ra, data.dec);
+
+            } );
+        } );
+    </script>
+  </body>
+</html>
