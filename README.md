@@ -1,9 +1,9 @@
 # Avaliação para Dev Junior 
 
 ## Objetivo:
-Criar uma aplicação web com javascript que permita listar, criar, excluir e atualizar uma lista de catálogos astronomicos e seus respectivos objetos.
+Criar uma aplicação web com javascript que permita listar(list), criar(create), excluir(delete) e atualizar(update) uma lista de catálogos astronomicos e seus respectivos objetos.
 
-A funcionalidade "Create" pode resumida em um botão que ao ser clicado inclua um novo catálogo, não é necessário a criação de formulário. A mesma coisa para o "Update", um botão que ao ser clicado altere o nome de um determinado catálogo.
+A funcionalidade "Create" pode ser resumida em um botão que ao ser clicado inclua um novo catálogo, não é necessário a criação de formulário. O mesmo acontece para o "Update", um botão que ao ser clicado altere o nome de um determinado catálogo.
 
 ## Opcionais:
 A aplicação deve ter uma interface de detalhe, que permita selecionar um catálogo e ter acesso aos objetos associados a ele. 
