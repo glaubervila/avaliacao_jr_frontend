@@ -42,11 +42,11 @@ Uma analogia de Catálogo e Objetos pode ser a relação entre Categorias e Prod
 **TODO** Descrever a etapa do git. 
 
 # Ambiente
-A maquina está configurada com docker, npm, yarn, git, vscode, Google Chrome e Firefox. O backend está instalado no home do usuário no diretório ```/home/avaliacao_jr_backend``` dentro deste diretório tem um script start.sh que inicia o Backend. o terminal onde o ambiente está rodando deve ficar aberto o tempo todo. Caso precise iniciar o backend novamente basta executar o script start, para desligar o backend usar as teclas CRTL + C no terminal que está executando. 
+A maquina está configurada com docker, npm, yarn, git, vscode, Google Chrome e Firefox. O backend está instalado no home do usuário no diretório ```/home/avaliacao_jr_backend``` dentro deste diretório tem um script start.sh que inicia o Backend. O terminal onde o ambiente está rodando deve ficar aberto o tempo todo. Caso precise iniciar o backend novamente basta executar o script start, para desligar o backend usar as teclas CRTL + C no terminal que está executando. 
 
 Ao ligar o backend a API vai estar disponivel na url http://localhost:5000
 
-O Banco de dados está no diretório ``` /home/avaliacao_jr_backend/db```, neste exemplo está sendo usado um banco SQLite que é preenchido com as informações ao ser iniciado. caso precise resetar o banco. basta remover este arquivo e iniciar o backend novamente. 
+O Banco de dados está no diretório ``` /home/avaliacao_jr_backend/db```, neste exemplo está sendo usado um banco SQLite que é preenchido com as informações ao ser iniciado. Caso precise resetar o banco, basta remover este arquivo e iniciar o backend novamente. 
 
 
 # APIs:
