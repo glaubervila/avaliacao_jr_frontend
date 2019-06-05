@@ -47,7 +47,7 @@ try:
     db.session.query(Catalog).delete()
 
     cat1 = Catalog(name='Galaxies', owner='Glauber Costa', date=datetime.now())
-    cat2 = Catalog(name='List of nebulae', owner='Cristiano Singulani', date=datetime.datetime.strptime('2019-05-04 20:45:23', '%Y-%m-%d %H:%M:%S'))
+    cat2 = Catalog(name='List of nebulae', owner='Cristiano Singulani', date=datetime.strptime('2019-05-04 20:45:23', '%Y-%m-%d %H:%M:%S'))
 
     db.session.add(cat1)
     db.session.add(cat2)
