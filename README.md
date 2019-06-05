@@ -1,14 +1,11 @@
-# Avaliação para Dev Junior 
+# Avaliação para Desenvolvedor Web Junior 
 
 ## Objetivo:
-Criar uma aplicação web com javascript que permita listar(list), criar(create), excluir(delete) e atualizar(update) uma lista de catálogos astronomicos e seus respectivos objetos.
+Criar uma aplicação web com javascript que permita listar(list), criar(create), excluir(delete) e atualizar(update) uma lista de catálogos astronômicos e seus respectivos objetos.
 
-A funcionalidade "Create" pode ser resumida em um botão que ao ser clicado inclua um novo catálogo, não é necessário a criação de formulário. O mesmo acontece para o "Update", um botão que ao ser clicado altere o nome de um determinado catálogo.
+A aplicação deve ter uma interface de detalhes, que permita selecionar um catálogo e ter acesso aos objetos associados a ele. 
 
-## Opcionais:
-A aplicação deve ter uma interface de detalhe, que permita selecionar um catálogo e ter acesso aos objetos associados a ele. 
-
-Na interface de detalhe ao lado da lista de objetos, deve ser utilizado o component Aladin, que permite exibir uma imagem do céu. Ao clicar em um objeto, deve-se posicionar o Aladin nas coordendas do objeto utilizando a função ```aladin.gotoRaDec()```. Essa função espera os atributos ra, dec, contidos na api catalog_objects. 
+Na interface de detalhes ao lado da lista de objetos, deve ser utilizado o component Aladin, que permite exibir uma imagem do céu. Ao clicar em um objeto, deve-se posicionar o Aladin nas coordendas do objeto utilizando a função ```aladin.gotoRaDec()```. Essa função espera os atributos ra, dec, contidos na api catalog_objects. 
 
 **Exemplo de uso:**
 ```javascript
@@ -26,22 +23,26 @@ aladin.gotoRaDec(data.ra, data.dec);
 ```
 
 Deve ser possivel fazer uma busca pelo nome do catálogo. 
+
 Deve ser possivel paginar a lista de catálogo.
 
+#### Recomendações:
+- Utilizar git, commit de preferência em língua inglesa;
+- Comentar funcionamento do código (preferência em língua inglesa);
+- A funcionalidade "Create" pode ser resumida em um botão que ao ser clicado inclua um novo catálogo, não é necessário a criação de formulário. O mesmo acontece para o "Update", um botão que ao ser clicado altere o nome de um determinado catálogo.
 
 ## Sobre os Dados
-Neste exemplo estamos usando Catálogo e Objetos. Um catálogo representa uma lista de objetos astronomicos, galaxias, estrelas, nebulosas etc. Um catálogo tem um dono (owner) e data de criação. 
+Neste exemplo estamos usando as tabelas: Catálogo e Objetos. Um catálogo representa uma lista de objetos astronomicos: galaxias, estrelas, nebulosas etc. Um catálogo tem um dono (owner) e data de criação. 
 
 Todo Objeto está relacionado a um Catálogo, e tem informações como: nome do objeto, coordenada, descrição e um link que aponta para a Wikipedia.
 A coordenada é formada pelos atributos **RA** e **Dec**. 
 
 Uma analogia de Catálogo e Objetos pode ser a relação entre Categorias e Produtos por exemplo. 
 
-**TODO** Incluir imagem do modelo. 
+![Database](./devweb.jpg "Database schema")
 
-**TODO** Descrever a etapa do git. 
 
-# Ambiente
+## Ambiente
 A maquina está configurada com docker, npm, yarn, git, vscode, Google Chrome e Firefox. O backend está instalado no home do usuário no diretório ```/home/avaliacao_jr_backend``` dentro deste diretório tem um script start.sh que inicia o Backend. O terminal onde o ambiente está rodando deve ficar aberto o tempo todo. Caso precise iniciar o backend novamente basta executar o script start, para desligar o backend usar as teclas CRTL + C no terminal que está executando. 
 
 Ao ligar o backend a API vai estar disponivel na url http://localhost:5000
@@ -49,8 +50,8 @@ Ao ligar o backend a API vai estar disponivel na url http://localhost:5000
 O Banco de dados está no diretório ``` /home/avaliacao_jr_backend/db```, neste exemplo está sendo usado um banco SQLite que é preenchido com as informações ao ser iniciado. Caso precise resetar o banco, basta remover este arquivo e iniciar o backend novamente. 
 
 
-# APIs:
-## Catalog
+## APIs:
+### Catalog
 **URL**: http://localhost:5000/api/catalog
 
 **Metodos**: ```['GET', 'POST', 'DELETE', 'PUT', 'PATCH']```
@@ -77,7 +78,7 @@ O Banco de dados está no diretório ``` /home/avaliacao_jr_backend/db```, neste
 
 ```
 
-## Catalog Objects
+### Catalog Objects
 **URL**: http://localhost:5000/api/catalog_objects
 
 **Metodos**: ['GET']
